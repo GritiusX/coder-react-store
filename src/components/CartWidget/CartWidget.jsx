@@ -3,10 +3,8 @@ import './CartWidget.css';
 import { GiShoppingCart } from "react-icons/gi";
 
 
-function CartWidget() {
+export default function CartWidget() {
   return (
     <GiShoppingCart className="red" />
   )
 }
-
-export default CartWidget

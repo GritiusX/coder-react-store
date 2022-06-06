@@ -1,3 +1,10 @@
-.greeting{
+.greetingItemListContainer{
     color: red;
+}
+.itemListContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
 }
