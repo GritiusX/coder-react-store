@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-export default function Character({id}) {
-  const {Cid} = useParams(id);
+export default function Character() {
+  const {id} = useParams();
   useEffect(() => {
-  }, [Cid]);
+  }, [id]);
   
   return (
     <>

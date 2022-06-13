@@ -12,7 +12,7 @@ export default function App() {
       <NavBar className="navbar" />
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/characters/:id" element={<Character/>} />
+          <Route path="/character/:id" element={<Character/>} />
         </Routes>
       <Footer/>
       </BrowserRouter>

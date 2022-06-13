@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import "./Item.css";
 
 export default function Item({ personaje }) {
-  const log = (id) =>{
-    console.log(id);
-  }
+  // const log = (id) =>{
+  //   console.log(id);
+  // }
 
   return (
     <>
@@ -21,9 +21,11 @@ export default function Item({ personaje }) {
           <p className="pe">{personaje.origin.name}</p>
           <p className="fw-bold pe">Especie:</p>
           <p className="pe">{personaje.species}</p>
-          <Link to={`/Character/${personaje.id}`} className="btn btn-outline-warning mt-3" onClick={() => log(personaje.id)}>
+
+          <Link to={`/Character/${personaje.id}`} className="btn btn-outline-warning mt-3">
             Buy a <span className="fw-bold yellowText">{personaje.name}</span>
           </Link>
+          
         </div>
       </div>
     </>
