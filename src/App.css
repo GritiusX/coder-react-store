@@ -2,3 +2,6 @@
   text-align: center;
   background-color: #fefae0;
 }
+.navbar{
+z-index:10;
+}

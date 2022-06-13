@@ -1,12 +1,22 @@
-import './App.css';
-import NavBar from './components/Navbar/NavBar.jsx';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer.jsx';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Footer from "./components/Footer/Footer";
+import NavBar from "./components/Navbar/NavBar.jsx";
+import Home from "./pages/Home";
+import Character from "./pages/Character";
 
 export default function App() {
   return (
     <>
-<NavBar />
-<ItemListContainer greeting={'Estoy saludando a traves de props'} />
+      <BrowserRouter>
+      <NavBar className="navbar" />
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/characters/:id" element={<Character/>} />
+        </Routes>
+      <Footer/>
+      </BrowserRouter>
+      
     </>
   );
-};
+}
