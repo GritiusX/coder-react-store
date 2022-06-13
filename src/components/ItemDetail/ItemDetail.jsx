@@ -15,7 +15,7 @@ export default function ItemDetail({ character }) {
             <h3 className="row">Sexo: {character.gender}</h3>
             <h3 className="row">Especie: {character.species}</h3>
 
-            <h3 className="row">Origen: {character.origin.name}</h3>
+            <h3 className="row">Origen: {character.origin?.name}</h3>
           </div>
         </article>
       </section>

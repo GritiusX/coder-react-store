@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 import "./Item.css";
 
 export default function Item({ personaje }) {
-  // const log = (id) =>{
-  //   console.log(id);
-  // }
-
   return (
     <>
       <div className="card">

@@ -12,7 +12,6 @@ export default function ItemDetailContainer({ id }) {
       .then((res) => res.json())
       .then((data) => setCharacter(data));
   };
-  console.log(character);
   useEffect(() => {
     const fetching = new Promise((res, rej) => {
       setTimeout(() => {
