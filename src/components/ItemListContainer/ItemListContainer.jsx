@@ -9,13 +9,13 @@ export default function ItemListContainer({ greeting }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    const getData = () => {
-      fetch("https://rickandmortyapi.com/api/character", { method: "GET" })
-        .then((response) => response.json())
-        .then((data) => setPersonajes(data.results));
-    };
+  const getData = () => {
+    fetch("https://rickandmortyapi.com/api/character", { method: "GET" })
+      .then((response) => response.json())
+      .then((data) => setPersonajes(data.results));
+  };
 
+  useEffect(() => {
     const fetching = new Promise((res, rej) => {
       setTimeout(() => {
         res(getData());
@@ -31,7 +31,6 @@ export default function ItemListContainer({ greeting }) {
       .finally(() => {
         setLoading(false);
       });
-
   }, []);
 
   const onAdd = (count) => {

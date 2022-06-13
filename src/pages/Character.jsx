@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
+import ItemDetailContainer from "../components/ItemDetailContainer/ItemDetailContainer";
 
 export default function Character() {
-  const {id} = useParams();
-  useEffect(() => {
-    console.log(id);
-  }, [id]);
-  
+  const { id } = useParams();
+
   return (
     <>
-     <h1>{id}</h1>
-      <Link to="/">ir a home</Link>
+      <article>
+        <ItemDetailContainer id={id} />
+        <Link to="/" className="btn btn-outline-dark my-3">Ir a home</Link>
+      </article>
     </>
   );
 }
