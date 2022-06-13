@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import "./ItemDetail.css";
 
 export default function ItemDetail({ character }) {
@@ -10,9 +11,11 @@ export default function ItemDetail({ character }) {
             <img src={character.image} alt={character.name} />
           </div>
           <div className="col justify-content-md-center">
-          <h1 className="row">Nombre: {character.name}</h1>
-          <h3 className="row">Sexo: {character.gender}</h3>
-          <h3 className="row">Origen: {character.origin.name}</h3>
+            <h1 className="row">Nombre: {character.name}</h1>
+            <h3 className="row">Sexo: {character.gender}</h3>
+            <h3 className="row">Especie: {character.species}</h3>
+
+            <h3 className="row">Origen: {character.origin.name}</h3>
           </div>
         </article>
       </section>

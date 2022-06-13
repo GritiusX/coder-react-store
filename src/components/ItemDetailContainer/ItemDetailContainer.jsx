@@ -12,7 +12,7 @@ export default function ItemDetailContainer({ id }) {
       .then((res) => res.json())
       .then((data) => setCharacter(data));
   };
-
+  console.log(character);
   useEffect(() => {
     const fetching = new Promise((res, rej) => {
       setTimeout(() => {
@@ -30,13 +30,14 @@ export default function ItemDetailContainer({ id }) {
         setLoading(false);
       });
   }, [id]);
+  //
 
   return (
     <>
       <div>
         {loading && "is loading"}
         {error && "is error"}
-        <ItemDetail character={character}/>
+        <ItemDetail character={character} />
       </div>
     </>
   );
