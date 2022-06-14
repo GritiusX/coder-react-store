@@ -1,43 +1,61 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import "./ItemDetailContainer.css";
 
 export default function ItemDetailContainer({ id }) {
-  const [character, setCharacter] = useState({});
+  const { userId } = useParams(id);
+
+  const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const getCharacterDetail = (id) => {
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((res) => res.json())
-      .then((data) => setCharacter(data));
-  };
-  useEffect(() => {
-    const fetching = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(getCharacterDetail(id));
-      }, 3000);
-    });
+const getData = (test)=>{
+  fetch('http://localhost:3000/json/products.json')
+  .then(res => res.json()).then(data => console.log(data.find(prod => prod.id === test)))
+}
 
-    fetching
-      .then(setLoading(true))
-      .catch((error) => {
-        setError(true);
-        console.log(error);
-      })
-      .finally(() => {
-        setLoading(false);
+useEffect(() => {
+  console.log('userID',userId);
+  
+  const fetching = new Promise((res, rej) => {
+        setTimeout(() => {
+          res(getData(userId));
+        }, 1000);
       });
-  }, [id]);
-  //
+      fetching.then((result)=> console.log(result));
+}, [userId]);
+  // useEffect(() => {
+  //   const getProductDetail = (id) => {
+  //     fetch(`http://localhost:3000/json/products.json/`)
+  //       .then((res) => res.json())
+  //       .then((data) => );
+  //   };
+  //   const fetching = new Promise((res, rej) => {
+  //     setTimeout(() => {
+  //       res(getProductDetail(userId));
+  //     }, 3000);
+  //   });
+
+  //   fetching
+  //     .then(setLoading(true))
+  //     .catch((error) => {
+  //       setError(true);
+  //       console.log(error);
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //     });
+  // }, [userId]);
+  
 
   return (
     <>
-      <div>
+      {/* <div>
         {loading && "is loading"}
         {error && "is error"}
-        <ItemDetail character={character} />
-      </div>
+        <ItemDetail product={product} />
+      </div> */}
     </>
   );
 }

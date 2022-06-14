@@ -5,22 +5,22 @@ import ItemList from "../ItemList/ItemList";
 //import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
 
 export default function ItemListContainer({ greeting }) {
-  const [personajes, setPersonajes] = useState([]);
+  const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   const getData = () => {
-    fetch("https://rickandmortyapi.com/api/character", { method: "GET" })
+    fetch("http://localhost:3000/json/products.json")
       .then((response) => response.json())
-      .then((data) => setPersonajes(data.results));
+      .then((data) => setProductos(data));
   };
-
   useEffect(() => {
     const fetching = new Promise((res, rej) => {
       setTimeout(() => {
         res(getData());
-      }, 3000);
+      }, 1000);
     });
+
 
     fetching
       .then(setLoading(true))
@@ -31,6 +31,7 @@ export default function ItemListContainer({ greeting }) {
       .finally(() => {
         setLoading(false);
       });
+      
   }, []);
 
   const onAdd = (count) => {
@@ -43,7 +44,7 @@ export default function ItemListContainer({ greeting }) {
         <h1 className="greetingItemListContainer">{greeting}</h1>
         {loading && "loading"}
         {error && "hay un error"}
-        <ItemList personajes={personajes} />
+        <ItemList productos={productos} />
         <ItemCount stock={20} inicial={0} onAdd={onAdd} />
       </article>
     </>

@@ -3,7 +3,7 @@ import "./App.css";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/Navbar/NavBar.jsx";
 import Home from "./pages/Home";
-import Character from "./pages/Character";
+import Products from "./pages/Products";
 
 export default function App() {
   return (
@@ -12,7 +12,7 @@ export default function App() {
       <NavBar className="navbar" />
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/character/:id" element={<Character/>} />
+          <Route path="/products/:id" element={<Products/>} />
         </Routes>
       <Footer/>
       </BrowserRouter>
