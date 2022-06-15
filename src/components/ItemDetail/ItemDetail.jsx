@@ -13,7 +13,7 @@ export default function ItemDetail({ product }) {
           <div className="col justify-content-md-center">
             <h1 className="row">Nombre: {product.title}</h1>
             <p className="row">Description: {product.description}</p>
-            <p className="row">Price: {product.price}</p>
+            <p className="row">Price: ${product.price}</p>
             <p className="pe">Rating:</p>
             <p className="pe">{product.rating}</p>
           </div>

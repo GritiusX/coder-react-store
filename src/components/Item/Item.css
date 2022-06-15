@@ -1,11 +1,15 @@
-.yellowText{
-    color: #FF06B7;
+.yellowText {
+  color: #ff06b7;
 }
-.pe{
-    margin:0;
-    padding:0;
+.pe {
+  margin: 0;
+  padding: 0;
 }
-.darkBody{
-    background-color:#51557E !important;
-    color:#fafafa;
+.darkBody {
+  background-color: #51557e !important;
+  color: #fafafa;
+}
+.card img {
+  height: 15rem !important;
+  width: 15rem !important;
 }

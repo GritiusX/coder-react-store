@@ -2,17 +2,26 @@ import React, { useEffect, useState } from "react";
 import "./ItemListContainer.css";
 import ItemCount from "../ItemCount/ItemCount.jsx";
 import ItemList from "../ItemList/ItemList";
-//import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
+import { useParams } from "react-router";
 
 export default function ItemListContainer({ greeting }) {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const { category } = useParams();
 
   const getData = () => {
     fetch("http://localhost:3000/json/products.json")
       .then((response) => response.json())
-      .then((data) => setProductos(data));
+      .then((data) => {
+        if (category) {
+          setProductos(
+            data.filter((productos) => productos.category == category)
+          );
+        } else {
+          setProductos(data);
+        }
+      });
   };
   useEffect(() => {
     const fetching = new Promise((res, rej) => {
@@ -20,7 +29,6 @@ export default function ItemListContainer({ greeting }) {
         res(getData());
       }, 1000);
     });
-
 
     fetching
       .then(setLoading(true))
@@ -31,8 +39,7 @@ export default function ItemListContainer({ greeting }) {
       .finally(() => {
         setLoading(false);
       });
-      
-  }, []);
+  }, [category]);
 
   const onAdd = (count) => {
     alert(`Agregados ${count} productos`);
