@@ -4,7 +4,6 @@ import Footer from "./components/Footer/Footer";
 import NavBar from "./components/Navbar/NavBar.jsx";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
-import Categories from "./pages/Categories";
 
 export default function App() {
   return (

@@ -1,6 +1,6 @@
 import Item from "../Item/Item";
 import "./ItemList.css";
-//personajes?.map(personaje => <Item key={personaje.id} personaje={personaje} />)
+
 export default function ItemList({ productos }) {
   return (
     <>

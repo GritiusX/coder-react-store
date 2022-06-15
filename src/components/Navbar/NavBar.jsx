@@ -20,7 +20,6 @@ export default function NavBar() {
   useEffect(() => {
     getCategories();
   }, []);
-  console.log(categories);
 
   // const categories = [...new Set(info.map((obj) => obj.category))];
   //v1.0 = console.log("categories", data.filter(prods => prods.category === param)[0].category)
