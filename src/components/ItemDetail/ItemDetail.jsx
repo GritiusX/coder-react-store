@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ItemCount from "../ItemCount/ItemCount.jsx";
 import "./ItemDetail.css";
 
-export default function ItemDetail({ product }) {
-  const [unidades, setUnidades] = useState(0);
+import { MyContext } from "../context/CartContext.jsx";
 
-  const onAdd = (count) => {
-    alert(`Agregados ${count} productos`);
-  };
+export default function ItemDetail({ product }) {
 
   return (
     <>
-      <section className="container d-flex flex-column justify-content-center align-items-center">
+      <section className="container d-flex flex-column justify-content-center align-items-center mt-5">
         <article className="row justify-content-md-center">
           <div className="col justify-content-md-center">
             <img src={product?.thumbnail} alt={product?.title} />
@@ -22,9 +19,10 @@ export default function ItemDetail({ product }) {
             <p className="row">Price: ${product?.price}</p>
             <p className="pe">Rating:</p>
             <p className="pe">{product?.rating}</p>
+            <p className="pe">stock: {product?.stock}</p>
           </div>
         </article>
-        <ItemCount stock={20} inicial={0} onAdd={onAdd} />
+        <ItemCount stock={parseInt(product.stock)} inicial={0} />
       </section>
     </>
   );

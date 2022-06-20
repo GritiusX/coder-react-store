@@ -1,9 +1,11 @@
-import { useState } from "react";
+import {useState, useContext} from 'react';
+import {MyContext} from '../context/CartContext.jsx';
 import "./ItemCount.css";
 
-export default function ItemCount({ stock, inicial, onAdd }) {
+export default function ItemCount({ stock, inicial }) {
   const [count, setCount] = useState(inicial);
   const [stockCarrito, setStockCarrito] = useState(stock);
+  const { onAdd } = useContext(MyContext);
 
   const sumar = () => {
     count < stock
@@ -26,8 +28,8 @@ export default function ItemCount({ stock, inicial, onAdd }) {
 
   return (
     <>
-      <div className="ItemCountContainer my-5">
-        <h5>Stock actual: {stockCarrito} </h5>
+      <div className="ItemCountContainer mb-5">
+        <h5>Stock actual: {stock} </h5>
         <div className="input-group mb-3 widthGroup">
           <button
             className="btn btn-danger"
