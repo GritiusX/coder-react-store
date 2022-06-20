@@ -7,10 +7,10 @@ export default function ItemDetailContainer({ id }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const getData = (test) => {
+  const getData = (elem) => {
     fetch("http://localhost:3000/json/products.json")
       .then((res) => res.json())
-      .then((data) => setProduct(data.find((prod) => prod.id == test)));
+      .then((data) => setProduct(data.find((prod) => prod.id == elem)));
   };
 
   useEffect(() => {

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./ItemListContainer.css";
-import ItemCount from "../ItemCount/ItemCount.jsx";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router";
 
@@ -41,10 +40,6 @@ export default function ItemListContainer({ greeting }) {
       });
   }, [category]);
 
-  const onAdd = (count) => {
-    alert(`Agregados ${count} productos`);
-  };
-
   return (
     <>
       <article className="itemListContainer">
@@ -52,7 +47,6 @@ export default function ItemListContainer({ greeting }) {
         {loading && "loading"}
         {error && "hay un error"}
         <ItemList productos={productos} />
-        <ItemCount stock={20} inicial={0} onAdd={onAdd} />
       </article>
     </>
   );

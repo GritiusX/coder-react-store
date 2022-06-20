@@ -26,7 +26,7 @@ export default function ItemCount({ stock, inicial, onAdd }) {
 
   return (
     <>
-      <div className="ItemCountContainer mb-5">
+      <div className="ItemCountContainer my-5">
         <h5>Stock actual: {stockCarrito} </h5>
         <div className="input-group mb-3 widthGroup">
           <button

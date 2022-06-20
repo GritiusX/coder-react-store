@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import Reactfrom from "react";
 import { Link, useParams } from "react-router-dom";
 import ItemDetailContainer from "../components/ItemDetailContainer/ItemDetailContainer";
 
 export default function Products() {
   const { id } = useParams();
-  console.log('Products id',id);
 
   return (
     <>
