@@ -1,29 +1,27 @@
-import {useState, useContext} from 'react';
-import {MyContext} from '../context/CartContext.jsx';
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { MyContext } from "../context/CartContext";
 import "./ItemCount.css";
 
-export default function ItemCount({ stock, inicial }) {
-  const [count, setCount] = useState(inicial);
-  const [stockCarrito, setStockCarrito] = useState(stock);
-  const { onAdd } = useContext(MyContext);
+export default function ItemCount({ stock, onAdd }) {
+  const {stockCarrito} = useContext(MyContext);
+  const [count, setCount] = useState(0);
 
   const sumar = () => {
     count < stock
-      ? setCount(count + 1) || setStockCarrito(stockCarrito - 1)
+      ? setCount(count + 1)
       : alert("no se pueden agregar mas objetos");
   };
 
   const restar = () => {
-    if (count > inicial) {
+    if (count > 0) {
       setCount(count - 1);
-      setStockCarrito(stockCarrito + 1);
     } else {
       alert("no puedes seguir restando objetos");
     }
   };
   const reset = () => {
-    setCount(inicial);
-    setStockCarrito(stock);
+    setCount(0);
   };
 
   return (
@@ -56,16 +54,25 @@ export default function ItemCount({ stock, inicial }) {
             <span className="fontSize">+</span>
           </button>
         </div>
-        <button
-          type="button"
-          className="btn btn-outline-dark cartButton"
-          onClick={() => {
-            onAdd(count);
-            reset();
-          }}
-        >
-          Agregar al Carrito
-        </button>
+        {stockCarrito > 0 ? (
+          <Link
+            to={`/Cart`}
+            className="btn btn-danger mt-3"
+          >
+            Ir a Carrito
+          </Link>
+        ) : (
+          <button
+            type="button"
+            className="btn btn-outline-dark cartButton"
+            onClick={() => {
+              onAdd(count);
+              reset();
+            }}
+          >
+            Agregar al Carrito
+          </button>
+        )}
       </div>
     </>
   );

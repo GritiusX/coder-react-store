@@ -1,11 +1,14 @@
-import React, { useContext, useState } from "react";
 import ItemCount from "../ItemCount/ItemCount.jsx";
+import {useContext} from 'react';
+import {MyContext} from '../context/CartContext.jsx';
 import "./ItemDetail.css";
 
-import { MyContext } from "../context/CartContext.jsx";
-
 export default function ItemDetail({ product }) {
+  const { setStockCarrito } = useContext(MyContext);
 
+  const onAdd = (number) => {
+    setStockCarrito(number);
+  };
   return (
     <>
       <section className="container d-flex flex-column justify-content-center align-items-center mt-5">
@@ -22,7 +25,7 @@ export default function ItemDetail({ product }) {
             <p className="pe">stock: {product?.stock}</p>
           </div>
         </article>
-        <ItemCount stock={parseInt(product.stock)} inicial={0} />
+        <ItemCount stock={product.stock} onAdd={onAdd} />
       </section>
     </>
   );
