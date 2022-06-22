@@ -30,6 +30,8 @@ export default function ItemDetailContainer({ id }) {
         setLoading(false);
       });
     }, [id]);
+
+    //falta agregar el loader para que cargue primero y despues salgan los itemDetail - after Context min 27.50
   return (
     <>
       <div>

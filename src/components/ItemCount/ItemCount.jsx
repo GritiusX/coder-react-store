@@ -1,27 +1,26 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { MyContext } from "../context/CartContext";
 import "./ItemCount.css";
 
-export default function ItemCount({ stock, onAdd }) {
-  const {stockCarrito} = useContext(MyContext);
-  const [count, setCount] = useState(0);
+export default function ItemCount({ stock, onAdd, qty, setQty }) {
+  const { carrito } = useContext(MyContext);
 
   const sumar = () => {
-    count < stock
-      ? setCount(count + 1)
+    qty < stock
+      ? setQty(qty + 1)
       : alert("no se pueden agregar mas objetos");
   };
 
   const restar = () => {
-    if (count > 0) {
-      setCount(count - 1);
+    if (qty > 0) {
+      setQty(qty - 1);
     } else {
       alert("no puedes seguir restando objetos");
     }
   };
   const reset = () => {
-    setCount(0);
+    setQty(0);
   };
 
   return (
@@ -43,7 +42,7 @@ export default function ItemCount({ stock, onAdd }) {
             readOnly
             aria-label="Example text with button addon"
             aria-describedby="button-addon1"
-            value={count}
+            value={qty}
           />
           <button
             className="btn btn-success"
@@ -54,11 +53,8 @@ export default function ItemCount({ stock, onAdd }) {
             <span className="fontSize">+</span>
           </button>
         </div>
-        {stockCarrito > 0 ? (
-          <Link
-            to={`/Cart`}
-            className="btn btn-danger mt-3"
-          >
+        {carrito > 0 ? (
+          <Link to={`/Cart`} className="btn btn-danger mt-3">
             Ir a Carrito
           </Link>
         ) : (
@@ -66,7 +62,7 @@ export default function ItemCount({ stock, onAdd }) {
             type="button"
             className="btn btn-outline-dark cartButton"
             onClick={() => {
-              onAdd(count);
+              onAdd();
               reset();
             }}
           >

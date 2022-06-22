@@ -1,14 +1,18 @@
 import ItemCount from "../ItemCount/ItemCount.jsx";
-import {useContext} from 'react';
-import {MyContext} from '../context/CartContext.jsx';
+import { useContext, useState } from "react";
+import { MyContext } from "../context/CartContext.jsx";
 import "./ItemDetail.css";
 
 export default function ItemDetail({ product }) {
-  const { setStockCarrito } = useContext(MyContext);
+  const { isInCart, addItem } = useContext(MyContext);
+  const [qty, setQty] = useState(1);
 
-  const onAdd = (number) => {
-    setStockCarrito(number);
+  const onAdd = () => {
+    alert(`se agregaron ${qty} items`);
+    isInCart(product.id);
+    addItem(product, qty);
   };
+
   return (
     <>
       <section className="container d-flex flex-column justify-content-center align-items-center mt-5">
@@ -25,7 +29,12 @@ export default function ItemDetail({ product }) {
             <p className="pe">stock: {product?.stock}</p>
           </div>
         </article>
-        <ItemCount stock={product.stock} onAdd={onAdd} />
+        <ItemCount
+          qty={qty}
+          setQty={setQty}
+          stock={product.stock}
+          onAdd={onAdd}
+        />
       </section>
     </>
   );
