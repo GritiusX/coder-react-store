@@ -4,6 +4,7 @@ import { MyContext } from "../components/context/CartContext";
 
 export default function Cart() {
   const { carrito } = useContext(MyContext);
+  console.log(carrito);
   return (
     <div>
       {carrito.length > 0 ? carrito.map((prods, i) => <h1 key={i}>{prods.title}</h1>) : "empty"}
