@@ -24,7 +24,7 @@ export default function CartContext({ children }) {
       auxArray[productIndex].qty += qty; //aumento en X cantidad, la cantidad del producto que encontre
       setCarrito(auxArray); //seteo el carrito viejo con la info nueva del auxArray
     } else {
-      setCarrito([...carrito, newItem]);
+      setCarrito([...carrito, newItem]);// ojo tiene que estar todo dentro del array
     }
   };
 
